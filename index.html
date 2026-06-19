@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sai Deshik Sandakacharla — AI &amp; Cloud Security Engineer</title>
+<meta name="description" content="Sai Deshik Sandakacharla — AI Security Engineer & Cloud Security Engineer specializing in LLM/agentic-AI security, detection engineering, and AWS cloud security. AWS Certified Security – Specialty, CompTIA Security+." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#050d18;
+    --bg-2:#071424;
+    --cyan:#22d3ee;
+    --cyan-bright:#5eeaff;
+    --cyan-dim:#0e7490;
+    --purple:#a78bfa;
+    --green:#34d399;
+    --txt:#dceaf4;
+    --txt-soft:#9fb6c8;
+    --muted:#5f7a91;
+    --line:rgba(34,211,238,.16);
+    --line-soft:rgba(34,211,238,.08);
+    --glass:rgba(255,255,255,.025);
+    --glass-2:rgba(255,255,255,.04);
+    --maxw:1200px;
+    --sans:'Space Grotesk','Inter',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--bg);color:var(--txt);font-family:var(--body);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;position:relative;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:rgba(34,211,238,.25);color:#eafdff}
+  h1,h2,h3,h4,h5{font-family:var(--sans);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+
+  /* ===== BACKGROUNDS ===== */
+  #cyber{position:fixed;inset:0;z-index:0;pointer-events:none}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 80% -8%,rgba(34,211,238,.10),transparent 62%),
+      radial-gradient(760px 560px at 2% 8%,rgba(167,139,250,.07),transparent 60%),
+      radial-gradient(700px 700px at 50% 116%,rgba(34,211,238,.06),transparent 60%);}
+  .grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(34,211,238,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.04) 1px,transparent 1px);
+    background-size:54px 54px;
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);
+    mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:2}
+  .divider{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .divider .ln{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .divider.purple .ln{background:linear-gradient(90deg,transparent,rgba(167,139,250,.22),transparent)}
+  .divider.green .ln{background:linear-gradient(90deg,transparent,rgba(52,211,153,.22),transparent)}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
+  nav.scrolled{background:rgba(5,13,24,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--sans);font-weight:700;font-size:16px}
+  .logo .mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--bg);
+    background:linear-gradient(135deg,var(--cyan-bright),var(--cyan));box-shadow:0 0 18px rgba(34,211,238,.5)}
+  .logo .mark-txt{letter-spacing:.01em}
+  .logo .mark-txt b{color:var(--cyan)}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{font-size:14px;color:var(--txt-soft);padding:8px 14px;border-radius:8px;transition:.18s;font-weight:500}
+  .nav-links a:hover{color:var(--cyan);background:rgba(34,211,238,.07)}
+  .nav-cta{font-size:14px !important;color:var(--cyan) !important;border:1px solid var(--line);font-weight:600 !important}
+  .nav-cta:hover{background:rgba(34,211,238,.12) !important;box-shadow:0 0 18px rgba(34,211,238,.25)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--cyan);border-radius:2px;transition:.2s}
+
+  /* ===== HERO ===== */
+  header.hero{padding:150px 0 90px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:48px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--cyan);
+    border:1px solid var(--line);border-radius:100px;padding:7px 15px;background:rgba(34,211,238,.05);margin-bottom:26px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+  .hero h1{font-size:clamp(40px,6.2vw,74px);line-height:1.02;margin-bottom:8px}
+  .hero h1 .grad{background:linear-gradient(120deg,#fff 10%,var(--cyan-bright) 55%,var(--cyan) 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 26px rgba(34,211,238,.28))}
+  .hero .role{font-family:var(--mono);font-size:clamp(14px,2.3vw,18px);color:var(--cyan);margin-top:18px;height:1.4em}
+  .hero .role .cur{display:inline-block;width:9px;height:1.05em;background:var(--cyan);vertical-align:-2px;margin-left:2px;animation:blink 1.05s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero p.lead{max-width:54ch;margin:24px 0 0;color:var(--txt-soft);font-size:16.5px;line-height:1.72}
+  .hero p.lead b{color:var(--txt);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{font-family:var(--sans);font-weight:600;font-size:15px;padding:13px 24px;border-radius:11px;display:inline-flex;align-items:center;gap:9px;cursor:pointer;transition:.2s}
+  .btn.primary{background:linear-gradient(135deg,var(--cyan-bright),var(--cyan));color:#042733;box-shadow:0 8px 30px -8px rgba(34,211,238,.7)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px -8px rgba(34,211,238,.9)}
+  .btn.ghost{border:1px solid var(--line);color:var(--txt);background:var(--glass)}
+  .btn.ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);box-shadow:0 0 22px rgba(34,211,238,.2)}
+  .socials{display:flex;gap:16px;margin-top:30px}
+  .socials a{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;color:var(--txt-soft);border:1px solid var(--line-soft);background:var(--glass);transition:.2s}
+  .socials a:hover{color:var(--cyan);border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 0 20px rgba(34,211,238,.22)}
+
+  /* hero profile card */
+  .id-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(170deg,rgba(34,211,238,.07),rgba(255,255,255,.02));backdrop-filter:blur(10px);overflow:hidden;box-shadow:0 30px 70px -40px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.02) inset}
+  .id-top{padding:22px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line-soft)}
+  .avatar{width:62px;height:62px;border-radius:14px;flex:none;display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:22px;color:var(--bg);
+    background:linear-gradient(135deg,var(--cyan-bright),var(--purple));box-shadow:0 0 26px rgba(34,211,238,.45)}
+  .id-top .nm{font-family:var(--sans);font-weight:600;font-size:17px}
+  .id-top .rl{font-size:12.5px;color:var(--cyan);font-family:var(--mono);margin-top:3px}
+  .id-rows{padding:8px 0}
+  .id-row{display:flex;justify-content:space-between;gap:14px;padding:11px 22px;font-size:13.5px}
+  .id-row .k{color:var(--muted);font-family:var(--mono);font-size:12px}
+  .id-row .v{color:var(--txt-soft);text-align:right}
+  .id-row .v.on{color:var(--green)}
+  .id-foot{padding:16px 22px;border-top:1px solid var(--line-soft);display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:11px;color:var(--cyan);border:1px solid var(--line);border-radius:6px;padding:4px 9px;background:rgba(34,211,238,.05)}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:84px 0;position:relative}
+  .sec-head{margin-bottom:46px}
+  .sec-tag{font-family:var(--mono);font-size:13px;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .sec-tag::before{content:"";width:26px;height:1px;background:var(--cyan)}
+  .sec-head h2{font-size:clamp(28px,4.4vw,42px)}
+  .sec-head p{color:var(--txt-soft);margin-top:14px;max-width:60ch;font-size:16px}
+
+  .card{border:1px solid var(--line-soft);border-radius:16px;background:var(--glass);backdrop-filter:blur(8px);transition:.25s}
+  .card:hover{border-color:var(--line);box-shadow:0 24px 50px -34px rgba(0,0,0,.8)}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:start}
+  .about-text p{color:var(--txt-soft);margin-bottom:18px;font-size:16px;line-height:1.78}
+  .about-text p b{color:var(--txt);font-weight:600}
+  .about-text p .hl{color:var(--cyan)}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stat{padding:22px;border-radius:14px;border:1px solid var(--line-soft);background:linear-gradient(160deg,rgba(34,211,238,.06),transparent)}
+  .stat .v{font-family:var(--sans);font-size:34px;font-weight:700;color:var(--cyan-bright);line-height:1;filter:drop-shadow(0 0 14px rgba(34,211,238,.3))}
+  .stat .v small{font-size:18px;color:var(--purple)}
+  .stat .k{font-size:12.5px;color:var(--txt-soft);margin-top:9px;line-height:1.4}
+
+  /* experience timeline */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--cyan),var(--purple),transparent)}
+  .tl-item{position:relative;margin-bottom:26px}
+  .tl-item::before{content:"";position:absolute;left:-34px;top:24px;width:19px;height:19px;border-radius:50%;border:2px solid var(--cyan);background:var(--bg);box-shadow:0 0 14px rgba(34,211,238,.5)}
+  .tl-item::after{content:"";position:absolute;left:-28px;top:30px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+  .tl-card{padding:24px 26px}
+  .tl-top{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline;margin-bottom:14px}
+  .tl-top h3{font-size:19px}
+  .tl-top h3 .co{color:var(--cyan);font-weight:500}
+  .tl-when{font-family:var(--mono);font-size:12.5px;color:var(--purple);white-space:nowrap}
+  .tl-loc{font-size:12px;color:var(--muted);font-family:var(--mono)}
+  .tl-card ul{list-style:none}
+  .tl-card li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--txt-soft);font-size:14.5px;line-height:1.6}
+  .tl-card li::before{content:"▸";position:absolute;left:2px;top:0;color:var(--cyan)}
+  .tl-card li b{color:var(--txt);font-weight:600}
+  .tl-card li .m{color:var(--cyan-bright);font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .tag{font-family:var(--mono);font-size:11.5px;color:var(--txt-soft);border:1px solid var(--line-soft);border-radius:6px;padding:5px 10px;background:rgba(34,211,238,.03);transition:.16s}
+  .tag:hover{color:var(--cyan);border-color:var(--line)}
+
+  /* skills */
+  .sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .sk{padding:24px}
+  .sk .ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:var(--cyan);border:1px solid var(--line);background:rgba(34,211,238,.06);margin-bottom:16px}
+  .sk h4{font-size:16px;margin-bottom:14px}
+  .sk .row{display:flex;flex-wrap:wrap;gap:7px}
+  .sk .row span{font-size:12.5px;color:var(--txt-soft);border:1px solid var(--line-soft);border-radius:7px;padding:5px 10px;background:var(--glass);transition:.16s}
+  .sk .row span:hover{color:var(--cyan);border-color:var(--line);transform:translateY(-1px)}
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .proj{padding:26px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .proj::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,var(--cyan),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.3s;pointer-events:none}
+  .proj:hover{transform:translateY(-5px)}
+  .proj:hover::after{opacity:1}
+  .proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .ptag{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);border-radius:6px;padding:4px 9px;background:rgba(34,211,238,.06)}
+  .ptag.ai{color:var(--purple);border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.07)}
+  .ptag.star{color:var(--green);border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.07)}
+  .proj .pico{color:var(--cyan)}
+  .proj h4{font-size:19px;margin-bottom:6px}
+  .proj .psub{font-size:12.5px;color:var(--muted);font-family:var(--mono);margin-bottom:14px}
+  .proj p{font-size:14px;color:var(--txt-soft);line-height:1.65;flex:1}
+  .proj p b{color:var(--txt);font-weight:600}
+  .stk{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .stk span{font-size:10.5px;color:var(--muted);font-family:var(--mono);border:1px solid var(--line-soft);border-radius:5px;padding:3px 7px}
+  .plink{margin-top:18px;font-size:13.5px;color:var(--cyan);font-weight:600;display:inline-flex;gap:8px;align-items:center;font-family:var(--sans)}
+  .plink .ar{transition:transform .18s}
+  .proj:hover .plink .ar{transform:translateX(4px)}
+  .repo-all{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:var(--sans);font-weight:600;font-size:14.5px;color:var(--txt);border:1px solid var(--line);border-radius:11px;padding:13px 22px;transition:.2s;background:var(--glass)}
+  .repo-all:hover{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 22px rgba(34,211,238,.2)}
+
+  /* education + certs */
+  .ec-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ec-col h3{font-size:15px;color:var(--txt-soft);font-family:var(--mono);font-weight:500;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .ec-col h3::before{content:"";width:20px;height:1px;background:var(--cyan)}
+  .ec{padding:24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+  .ec:last-child{margin-bottom:0}
+  .ec .ico{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;color:var(--cyan);border:1px solid var(--line);background:rgba(34,211,238,.06)}
+  .ec .deg{font-size:16.5px;font-family:var(--sans);font-weight:600;color:var(--txt)}
+  .ec .org{font-size:13.5px;color:var(--txt-soft);margin-top:4px}
+  .ec .meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:9px;display:flex;gap:14px;flex-wrap:wrap}
+  .ec .meta .gpa{color:var(--green)}
+
+  /* contact */
+  .contact-card{padding:60px 40px;text-align:center;border:1px solid var(--line);border-radius:22px;background:linear-gradient(170deg,rgba(34,211,238,.08),rgba(167,139,250,.04));backdrop-filter:blur(10px);position:relative;overflow:hidden}
+  .contact-card::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 65%);top:-150px;left:50%;transform:translateX(-50%);pointer-events:none}
+  .contact-card h2{font-size:clamp(28px,5vw,46px);position:relative}
+  .contact-card h2 .grad{background:linear-gradient(120deg,#fff,var(--cyan-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .contact-card p{color:var(--txt-soft);max-width:50ch;margin:18px auto 0;position:relative;font-size:16px}
+  .contact-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;position:relative}
+  .clinks{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:34px;position:relative;font-family:var(--mono);font-size:13px}
+  .clinks a{color:var(--txt-soft);display:inline-flex;gap:8px;align-items:center;transition:.16s}
+  .clinks a:hover{color:var(--cyan)}
+
+  footer{border-top:1px solid var(--line-soft);padding:34px 0;margin-top:30px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
+  .foot .logo{font-size:14px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .id-card{max-width:440px}
+    .about-grid{grid-template-columns:1fr;gap:30px}
+    .sk-grid{grid-template-columns:1fr 1fr}
+    .proj-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .nav-links.open{display:flex;position:absolute;top:64px;right:28px;flex-direction:column;background:rgba(7,20,36,.96);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:14px;padding:14px;gap:4px;min-width:190px}
+    .burger{display:flex}
+  }
+  @media (max-width:620px){
+    .wrap,.divider{padding:0 18px}
+    .stat-grid,.sk-grid,.proj-grid,.ec-grid{grid-template-columns:1fr}
+    header.hero{padding:120px 0 64px}
+    section{padding:62px 0}
+    .contact-card{padding:44px 22px}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="cyber"></canvas>
+<div class="grid-overlay"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#top" class="logo"><span class="mark">SD</span><span class="mark-txt">Sai<b>.</b>sec</span></a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+    <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap"><div class="hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Available for work · Open to relocate</span>
+      <h1><span class="grad">Sai Deshik</span><br/><span class="grad">Sandakacharla</span></h1>
+      <div class="role" id="role">&gt; AI Security Engineer<span class="cur"></span></div>
+      <p class="lead">Security engineer with <b>4+ years across cloud security, detection engineering, and AI/LLM security</b>. I harden model APIs, RAG pipelines, and AWS workloads against prompt injection, data leakage, and over-permissioned access — with ATT&amp;CK-mapped detection wired in from the first commit.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn primary">View my work
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/Saideshik" target="_blank" rel="noopener" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.32 9.32 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
+        <a href="https://www.linkedin.com/in/sai-deshik-sandakacharla-4165a6237/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.65h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9V9Z"/></svg></a>
+        <a href="mailto:saideshik195@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg></a>
+      </div>
+    </div>
+
+    <div class="id-card rv">
+      <div class="id-top">
+        <div class="avatar">SD</div>
+        <div><div class="nm">Sai Deshik Sandakacharla</div><div class="rl">~/ai-cloud-security-eng</div></div>
+      </div>
+      <div class="id-rows">
+        <div class="id-row"><span class="k">status</span><span class="v on">● open to work</span></div>
+        <div class="id-row"><span class="k">location</span><span class="v">USA · relocate=true</span></div>
+        <div class="id-row"><span class="k">focus</span><span class="v">LLM/RAG · AWS security</span></div>
+        <div class="id-row"><span class="k">experience</span><span class="v">4+ years</span></div>
+        <div class="id-row"><span class="k">education</span><span class="v">M.S. Cybersecurity · 3.9</span></div>
+      </div>
+      <div class="id-foot">
+        <span class="chip">AWS Security – Specialty</span>
+        <span class="chip">Security+</span>
+      </div>
+    </div>
+  </div></div>
+</header>
+
+<div class="divider"><div class="ln"></div></div>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap rv">
+  <div class="sec-head"><div class="sec-tag">01 — About</div><h2>Where detection meets AI.</h2></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a security engineer who runs the full <b>detection-and-response lifecycle</b> and cloud security posture management — <span class="hl">IAM, KMS, CloudTrail/CloudWatch, GuardDuty, and SIEM</span> (Splunk/ELK, Sentinel) — with Python automation wired straight into CI/CD.</p>
+      <p>My focus now is <b>securing LLM and agentic-AI workloads</b>: prompt-injection defense, model-API and data-pipeline security, and secure RAG. That work is proven in production-grade builds like <b>ThreatWatch</b> (real-time SOC detection with ATT&amp;CK-mapped, LLM-assisted triage) and <b>MedGuide</b> (secure medical RAG with PHI redaction and grounding validation).</p>
+      <p>I apply <span class="hl">MITRE ATT&amp;CK/ATLAS, OWASP Top 10 (incl. LLMs), NIST CSF, and CIS Benchmarks</span> to harden cloud and AI systems and accelerate incident response — building controls that catch real adversaries, not just pass an audit.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="v">4<small>+</small></div><div class="k">Years in security engineering</div></div>
+      <div class="stat"><div class="v">25<small>%</small></div><div class="k">High-risk AI findings cut pre-release</div></div>
+      <div class="stat"><div class="v">90<small>%</small></div><div class="k">Critical vulns blocked in CI/CD</div></div>
+      <div class="stat"><div class="v">120<small>+</small></div><div class="k">Assets under detection coverage</div></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="divider"><div class="ln"></div></div>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="wrap rv">
+  <div class="sec-head"><div class="sec-tag">02 — Experience</div><h2>Career trajectory.</h2></div>
+  <div class="timeline">
+
+    <div class="tl-item"><div class="card tl-card">
+      <div class="tl-top">
+        <h3>Cloud AI Security Engineer <span class="co">· Walmart Global Tech</span></h3>
+        <div style="text-align:right"><div class="tl-when">Jun 2025 — May 2026</div><div class="tl-loc">USA</div></div>
+      </div>
+      <ul>
+        <li>Hardened <b>AI/ML workloads on AWS</b> via least-privilege IAM, KMS encryption, and centralized logging — remediating high-risk misconfigurations surfaced in security review.</li>
+        <li>Assessed <b>model APIs and data pipelines</b> for prompt-injection, data-leakage, and over-permissioned access, driving remediation that <span class="m">cut high-risk findings 25%</span> before release.</li>
+        <li>Monitored cloud and AI-platform activity with SIEM, CloudTrail/CloudWatch, and Defender/Sentinel to detect suspicious behavior and support incident response.</li>
+        <li>Automated cloud security validation with <b>Python + CI/CD checks</b> to catch vulnerable configs, exposed secrets, and weak permissions pre-deploy.</li>
+      </ul>
+      <div class="tags"><span class="tag">AWS</span><span class="tag">IAM</span><span class="tag">KMS</span><span class="tag">SIEM</span><span class="tag">CloudTrail</span><span class="tag">Sentinel</span><span class="tag">LLM Security</span><span class="tag">Python · CI/CD</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="card tl-card">
+      <div class="tl-top">
+        <h3>AI Cloud Security Engineer <span class="co">· Tech Mahindra</span></h3>
+        <div style="text-align:right"><div class="tl-when">Apr 2023 — Jul 2024</div><div class="tl-loc">India</div></div>
+      </div>
+      <ul>
+        <li>Strengthened <b>AWS security posture</b> through IAM policy reviews, security-group tightening, and encryption/access-control baselines.</li>
+        <li>Investigated cloud events via <b>CloudTrail, CloudWatch, and GuardDuty</b>, triaging suspicious activity and supporting incident response.</li>
+        <li>Reviewed AI/ML application risk across <b>model endpoints, API access, and data exposure</b>, documenting findings for remediation.</li>
+        <li>Built Python automation for config checks and remediation tracking, improving visibility into open vulnerabilities.</li>
+      </ul>
+      <div class="tags"><span class="tag">AWS</span><span class="tag">GuardDuty</span><span class="tag">CloudTrail</span><span class="tag">IAM</span><span class="tag">AI/ML Risk</span><span class="tag">Python</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="card tl-card">
+      <div class="tl-top">
+        <h3>Security Engineer <span class="co">· Tech Mahindra</span></h3>
+        <div style="text-align:right"><div class="tl-when">May 2021 — Apr 2023</div><div class="tl-loc">India</div></div>
+      </div>
+      <ul>
+        <li>Led <b>detection engineering and IR across 120+ cloud and on-prem assets</b> (AWS, Kubernetes), mitigating high-severity threats from anomalous API calls and container compromise.</li>
+        <li>Refined SIEM rules in <b>Splunk and ELK</b>, <span class="m">lowering false positives ~25%</span> while preserving high-confidence alerts for remote execution and unauthorized access.</li>
+        <li>Integrated <b>Snyk, SonarQube, and OWASP ZAP</b> into CI/CD, <span class="m">blocking 90% of critical vulnerabilities</span> from reaching production.</li>
+        <li>Ran post-incident analysis and CIS-aligned reviews (+20% remediation SLA); coordinated live IR and reconstructed attack timelines from multi-source logs.</li>
+      </ul>
+      <div class="tags"><span class="tag">Splunk</span><span class="tag">ELK</span><span class="tag">Kubernetes</span><span class="tag">Snyk</span><span class="tag">SonarQube</span><span class="tag">OWASP ZAP</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">CIS</span></div>
+    </div></div>
+
+  </div>
+</div></section>
+
+<div class="divider"><div class="ln"></div></div>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap rv">
+  <div class="sec-head"><div class="sec-tag">03 — Skills</div><h2>Capability stack.</h2></div>
+  <div class="sk-grid">
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg></div>
+      <h4>Security Engineering</h4>
+      <div class="row"><span>Threat Detection</span><span>Detection Engineering</span><span>Incident Response</span><span>Security Monitoring</span><span>Vulnerability Mgmt</span><span>Risk Assessment</span><span>Adversary Simulation</span></div>
+    </div>
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19"/></svg></div>
+      <h4>AI / ML Security</h4>
+      <div class="row"><span>LLM Security</span><span>Prompt Injection/Abuse</span><span>Model API Security</span><span>Data Pipeline Security</span><span>OWASP LLM Top 10</span><span>MITRE ATLAS</span><span>AI Red Teaming</span></div>
+    </div>
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+      <h4>Security Platforms</h4>
+      <div class="row"><span>Splunk</span><span>ELK / Kibana</span><span>Sentinel</span><span>Defender EDR/XDR</span><span>Qualys</span><span>Nessus</span><span>Snyk</span><span>SonarQube</span><span>OWASP ZAP</span></div>
+    </div>
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 6 6 0 0 0-11.6-1.5A4 4 0 0 0 6 19h11.5Z"/></svg></div>
+      <h4>Cloud &amp; Infrastructure</h4>
+      <div class="row"><span>AWS</span><span>Azure</span><span>GuardDuty</span><span>CloudTrail</span><span>CloudWatch</span><span>IAM</span><span>KMS/Secrets</span><span>CSPM</span><span>Zero Trust</span><span>Kubernetes</span><span>Docker</span><span>Linux</span></div>
+    </div>
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4 9 20M18 8l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+      <h4>DevSecOps &amp; Automation</h4>
+      <div class="row"><span>CI/CD Security</span><span>SAST / DAST / SCA</span><span>IaC Scanning (Terraform)</span><span>GitHub Actions</span><span>Jenkins</span><span>Secrets Detection</span></div>
+    </div>
+    <div class="card sk">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div>
+      <h4>Languages &amp; Frameworks</h4>
+      <div class="row"><span>Python</span><span>Bash</span><span>PowerShell</span><span>SQL</span><span>REST APIs</span><span>MITRE ATT&amp;CK</span><span>NIST CSF</span><span>CIS</span><span>ISO 27001</span></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="divider purple"><div class="ln"></div></div>
+
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap rv">
+  <div class="sec-head"><div class="sec-tag">04 — Projects</div><h2>Selected work.</h2><p>Three headline AI-security systems and three cloud-security builds — production-grade, ATT&amp;CK-mapped, and shipped.</p></div>
+  <div class="proj-grid">
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag ai">Secure RAG · Cloud</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg></span></div>
+      <h4>RetailGuard</h4><div class="psub">secure retail RAG / AI-risk system</div>
+      <p>Grounded retail AI assistant over product, order &amp; support data with hybrid <b>FAISS + BM25</b> retrieval and FastAPI services. AI security controls — <b>PII redaction, prompt-injection detection, out-of-scope blocking, secrets handling, CloudWatch logging</b> — to cut unsafe and data-leaking responses.</p>
+      <div class="stk"><span>Python</span><span>FastAPI</span><span>FAISS</span><span>BM25</span><span>AWS S3</span><span>CloudWatch</span><span>Docker</span></div>
+      <a class="plink" href="https://github.com/Saideshik" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag star">★ Featured · SOC</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6m0 0 3.5-2M12 8 8.5 6M5 12H2m20 0h-3m-2.5 5.5L19 20M7.5 17.5 5 20"/><circle cx="12" cy="12" r="3.5"/></svg></span></div>
+      <h4>ThreatWatch</h4><div class="psub">AI-driven detection &amp; defense dashboard</div>
+      <p>End-to-end SOC pipeline: Windows attack → Sysmon → Wazuh → Python forwarder → FastAPI → React, surfacing <b>ATT&amp;CK-mapped alerts in real time over SSE</b>. An LLM generates per-alert triage with SHA-256 dedup and a 500-alert cap — deployed live on Railway/Vercel.</p>
+      <div class="stk"><span>Python</span><span>FastAPI</span><span>React</span><span>Wazuh</span><span>Sysmon</span><span>ATT&amp;CK</span><span>Railway</span><span>Vercel</span></div>
+      <a class="plink" href="https://github.com/Saideshik/ThreatWatch-final" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag ai">Secure RAG · PHI</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"/><path d="M12 8v4M10 10h4"/></svg></span></div>
+      <h4>MedGuide</h4><div class="psub">secure medical RAG system</div>
+      <p>Hybrid <b>FAISS + BM25</b> retrieval over FDA drug-label and first-aid corpora with <b>PHI redaction, grounding-score validation, and out-of-scope detection</b> to constrain unsafe LLM output. Hardened secrets after a live key exposure; safety logic verified by 11 passing unit tests.</p>
+      <div class="stk"><span>Python</span><span>FAISS</span><span>BM25</span><span>FastAPI</span><span>Streamlit</span><span>PHI Redaction</span><span>Docker</span></div>
+      <a class="plink" href="https://github.com/Saideshik" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag">Multi-cloud · IAM</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span></div>
+      <h4>VaultGuardian</h4><div class="psub">multi-cloud secret-management framework</div>
+      <p>Serverless secret management integrating <b>HashiCorp Vault, AWS KMS, Azure Key Vault, and GCP Secret Manager</b> for automated rotation, least-privilege IAM enforcement, and NIST SP 800-57 / CIS compliance.</p>
+      <div class="stk"><span>Vault</span><span>AWS KMS</span><span>Azure</span><span>GCP</span><span>NIST 800-57</span><span>CIS</span></div>
+      <a class="plink" href="https://github.com/Saideshik/VaultGuardian-Multi-Cloud-Secret-Management-Access-Control-Framework" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag">AWS · Serverless</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></span></div>
+      <h4>Serverless IR Pipeline</h4><div class="psub">automated incident response on AWS</div>
+      <p>Serverless IR automation across <b>Lambda, GuardDuty, EventBridge, EC2, S3, DynamoDB, and SNS</b>. Auto-quarantines compromised hosts, logs to secure storage, persists structured records, and fires real-time alerts on suspicious findings.</p>
+      <div class="stk"><span>Lambda</span><span>GuardDuty</span><span>EventBridge</span><span>DynamoDB</span><span>S3</span><span>SNS</span></div>
+      <a class="plink" href="https://github.com/Saideshik/1.-Automated-Incident-Response-Pipeline-AWS-EC2-Lambda-S3-DynamoDB-SNS-EventBridge-GuardDuty-" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+    <div class="card proj">
+      <div class="proj-top"><span class="ptag ai">AI · Offensive</span>
+        <span class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6M9 9l6 6"/></svg></span></div>
+      <h4>VulnPilot</h4><div class="psub">autonomous pentest framework</div>
+      <p>AI-driven pentest orchestrator automating <b>OWASP ZAP, Nmap, and Metasploit RPC</b> workflows to identify, reproduce, and risk-score vulnerabilities in sandboxed Docker — generating ATT&amp;CK-mapped risk reports.</p>
+      <div class="stk"><span>Python</span><span>Go</span><span>Metasploit</span><span>OWASP ZAP</span><span>Nmap</span><span>Docker</span></div>
+      <a class="plink" href="https://github.com/Saideshik/VulnPilot-Autonomous-Penetration-Exploit-Simulation-Framework" target="_blank" rel="noopener">View on GitHub <span class="ar">→</span></a>
+    </div>
+
+  </div>
+  <a class="repo-all" href="https://github.com/Saideshik" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.32 9.32 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+    See all repositories on GitHub →
+  </a>
+</div></section>
+
+<div class="divider"><div class="ln"></div></div>
+
+<!-- EDUCATION & CERTS -->
+<section id="education"><div class="wrap rv">
+  <div class="sec-head"><div class="sec-tag">05 — Education &amp; Certifications</div><h2>Credentials.</h2></div>
+  <div class="ec-grid">
+    <div class="ec-col">
+      <h3>Education</h3>
+      <div class="card ec">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m22 9-10-5L2 9l10 5 10-5Z"/><path d="M6 11v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></div>
+        <div><div class="deg">M.S. in Cybersecurity</div><div class="org">Saint Louis University — Missouri, USA</div><div class="meta"><span>Aug 2024 – May 2026</span><span class="gpa">GPA 3.9 / 4.0</span></div></div>
+      </div>
+    </div>
+    <div class="ec-col">
+      <h3>Certifications</h3>
+      <div class="card ec">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="9" r="6"/><path d="m9 14-2 7 5-3 5 3-2-7"/></svg></div>
+        <div><div class="deg">AWS Certified Security — Specialty</div><div class="org">Amazon Web Services</div></div>
+      </div>
+      <div class="card ec">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg></div>
+        <div><div class="deg">CompTIA Security+ (SY0-701)</div><div class="org">CompTIA</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="divider green"><div class="ln"></div></div>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap rv">
+  <div class="contact-card">
+    <h2>Let's build something <span class="grad">secure</span>.</h2>
+    <p>I'm looking for AI Security and Cloud Security Engineer roles, and I'm open to relocating anywhere in the U.S. Have a role, a question, or just want to talk LLM security and detection engineering? My inbox is open.</p>
+    <div class="contact-cta">
+      <a class="btn primary" href="mailto:saideshik195@gmail.com">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg>
+        Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/sai-deshik-sandakacharla-4165a6237/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+    <div class="clinks">
+      <a href="mailto:saideshik195@gmail.com">saideshik195@gmail.com</a>
+      <a href="tel:+13148280586">+1 (314) 828-0586</a>
+      <a href="https://github.com/Saideshik" target="_blank" rel="noopener">github.com/Saideshik</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot">
+  <a href="#top" class="logo"><span class="mark">SD</span><span class="mark-txt">Sai<b>.</b>sec</span></a>
+  <span>© 2026 Sai Deshik Sandakacharla — AI &amp; Cloud Security Engineer</span>
+</div></footer>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ===== NAV ===== */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+const burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+
+/* ===== ROLE TYPEWRITER ===== */
+(function(){
+  const el=document.getElementById('role');if(!el)return;
+  const roles=["AI Security Engineer","Cloud Security Engineer","Detection Engineering","LLM & Agentic-AI Security","DevSecOps Automation"];
+  if(reduce){el.innerHTML='&gt; '+roles[0]+'<span class="cur"></span>';return;}
+  let r=0,c=0,del=false;
+  (function tick(){
+    const w=roles[r];
+    el.innerHTML='&gt; '+w.slice(0,c)+'<span class="cur"></span>';
+    if(!del){c++;if(c>w.length){del=true;setTimeout(tick,1400);return;}}
+    else{c--;if(c<0){del=false;r=(r+1)%roles.length;c=0;}}
+    setTimeout(tick,del?40:80);
+  })();
+})();
+
+/* ===== REVEAL ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ===== CYBER PARTICLE NETWORK BACKGROUND ===== */
+(function(){
+  const cv=document.getElementById('cyber'),ctx=cv.getContext('2d');
+  let w,h,parts,mouse={x:-9999,y:-9999},dpr=Math.min(devicePixelRatio||1,2);
+  function size(){
+    w=cv.width=innerWidth*dpr;h=cv.height=innerHeight*dpr;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+    const target=innerWidth<620?34:innerWidth<1000?56:84;
+    parts=[];for(let i=0;i<target;i++){parts.push({x:Math.random()*w,y:Math.random()*h,z:Math.random(),vx:(Math.random()-.5)*.22*dpr,vy:(Math.random()-.5)*.22*dpr});}
+  }
+  size();addEventListener('resize',size);
+  addEventListener('mousemove',e=>{mouse.x=e.clientX*dpr;mouse.y=e.clientY*dpr;});
+  addEventListener('mouseleave',()=>{mouse.x=mouse.y=-9999;});
+  const LINK=128*dpr;
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of parts){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+      const dm=Math.hypot(p.x-mouse.x,p.y-mouse.y);
+      if(dm<160*dpr){const f=(160*dpr-dm)/(160*dpr);p.x+=(p.x-mouse.x)/dm*f*1.4;p.y+=(p.y-mouse.y)/dm*f*1.4;}
+      const r=(p.z*1.6+.6)*dpr;
+      ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.28);
+      ctx.fillStyle='rgba(94,234,255,'+(.25+p.z*.45)+')';ctx.fill();
+    }
+    for(let i=0;i<parts.length;i++){
+      for(let j=i+1;j<parts.length;j++){
+        const a=parts[i],b=parts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<LINK){
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle='rgba(34,211,238,'+(1-d/LINK)*.18+')';ctx.lineWidth=dpr*.6;ctx.stroke();
+        }
+      }
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  let raf;
+  if(!reduce){draw();}
+  else{ // static single frame
+    for(const p of parts){ctx.beginPath();ctx.arc(p.x,p.y,(p.z*1.6+.6)*dpr,0,6.28);ctx.fillStyle='rgba(94,234,255,.4)';ctx.fill();}
+  }
+})();
+</script>
+</body>
+</html>
